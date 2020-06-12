@@ -1,0 +1,23 @@
+{
+  "name": "ta2_concurrente",
+  "version": "1.0.0",
+  "description": "trabajo concurrente",
+  "main": "server.js",
+  "scripts": {
+    "test": "none",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/u201314147/TA2_Concurrente.git"
+  },
+  "keywords": [
+    "concurrente"
+  ],
+  "author": "Eduardo Arias",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/u201314147/TA2_Concurrente/issues"
+  },
+  "homepage": "https://github.com/u201314147/TA2_Concurrente#readme"
+}

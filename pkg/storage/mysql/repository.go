@@ -26,9 +26,18 @@ func (r gopherRepository) CreateGopher(ctx context.Context, g *gopherapi.Gopher)
 		r.table,
 		sqlGopher{
 			ID:        g.ID,
-			Name:      g.Name,
-			Image:     g.Image,
-			Age:       g.Age,
+			Fixedacidity:      g.Fixedacidity,
+			Volatileacidity:     g.Volatileacidity,
+			Citricacid:       g.Citricacid,
+			Residualsugar:      g.Residualsugar,
+			Chlorides:     g.Chlorides,
+			Freesulfurdioxide:       g.Freesulfurdioxide,
+			Totalsulfurdioxide:      g.Totalsulfurdioxide,
+			Density:     g.Density,
+			PH:       g.PH,
+			Sulphates:      g.Sulphates,
+			Alcohol:     g.Alcohol,
+			Quality :       g.Quality ,
 			CreatedAt: g.CreatedAt,
 			UpdatedAt: g.UpdatedAt,
 		},
@@ -62,10 +71,19 @@ func (r gopherRepository) FetchGophers(ctx context.Context) ([]gopherapi.Gopher,
 		}
 
 		gophers = append(gophers, gopherapi.Gopher{
-			ID:        sqlGopher.ID,
-			Name:      sqlGopher.Name,
-			Image:     sqlGopher.Image,
-			Age:       sqlGopher.Age,
+				ID:        sqlGopher.ID,
+			Fixedacidity:      sqlGopher.Fixedacidity,
+			Volatileacidity:     sqlGopher.Volatileacidity,
+			Citricacid:       sqlGopher.Citricacid,
+			Residualsugar:      sqlGopher.Residualsugar,
+			Chlorides:     sqlGopher.Chlorides,
+			Freesulfurdioxide:       sqlGopher.Freesulfurdioxide,
+			Totalsulfurdioxide:      sqlGopher.Totalsulfurdioxide,
+			Density:     sqlGopher.Density,
+			PH:       sqlGopher.PH,
+			Sulphates:      sqlGopher.Sulphates,
+			Alcohol:     sqlGopher.Alcohol,
+			Quality :       sqlGopher.Quality ,
 			CreatedAt: sqlGopher.CreatedAt,
 			UpdatedAt: sqlGopher.UpdatedAt,
 		})
@@ -89,9 +107,18 @@ func (r gopherRepository) UpdateGopher(ctx context.Context, ID string, g gophera
 		r.table,
 		sqlGopher{
 			ID:        g.ID,
-			Name:      g.Name,
-			Image:     g.Image,
-			Age:       g.Age,
+			Fixedacidity:      g.Fixedacidity,
+			Volatileacidity:     g.Volatileacidity,
+			Citricacid:       g.Citricacid,
+			Residualsugar:      g.Residualsugar,
+			Chlorides:     g.Chlorides,
+			Freesulfurdioxide:       g.Freesulfurdioxide,
+			Totalsulfurdioxide:      g.Totalsulfurdioxide,
+			Density:     g.Density,
+			PH:       g.PH,
+			Sulphates:      g.Sulphates,
+			Alcohol:     g.Alcohol,
+			Quality :       g.Quality ,
 			CreatedAt: g.CreatedAt,
 			UpdatedAt: g.UpdatedAt,
 		},
@@ -134,19 +161,37 @@ func (r gopherRepository) FetchGopherByID(ctx context.Context, ID string) (*goph
 
 	return &gopherapi.Gopher{
 		ID:        sqlGopher.ID,
-		Name:      sqlGopher.Name,
-		Image:     sqlGopher.Image,
-		Age:       sqlGopher.Age,
-		CreatedAt: sqlGopher.CreatedAt,
-		UpdatedAt: sqlGopher.UpdatedAt,
+			Fixedacidity:      sqlGopher.Fixedacidity,
+			Volatileacidity:     sqlGopher.Volatileacidity,
+			Citricacid:       sqlGopher.Citricacid,
+			Residualsugar:      sqlGopher.Residualsugar,
+			Chlorides:     sqlGopher.Chlorides,
+			Freesulfurdioxide:       sqlGopher.Freesulfurdioxide,
+			Totalsulfurdioxide:      sqlGopher.Totalsulfurdioxide,
+			Density:     sqlGopher.Density,
+			PH:       sqlGopher.PH,
+			Sulphates:      sqlGopher.Sulphates,
+			Alcohol:     sqlGopher.Alcohol,
+			Quality :       sqlGopher.Quality ,
+			CreatedAt: sqlGopher.CreatedAt,
+			UpdatedAt: sqlGopher.UpdatedAt,
 	}, nil
 }
 
 type sqlGopher struct {
 	ID        string     `db:"id"`
-	Name      string     `db:"name"`
-	Image     string     `db:"image"`
-	Age       int        `db:"age"`
+	Fixedacidity      string     `db:"Fixedacidity"`
+	Volatileacidity     string     `db:"Volatileacidity"`
+	Citricacid       string        `db:"Citricacid"`
+	Residualsugar      string     `db:"Residualsugar"`
+	Chlorides     string     `db:"Chlorides"`
+	Freesulfurdioxide       string        `db:"Freesulfurdioxide"`
+	Totalsulfurdioxide      string     `db:"Totalsulfurdioxide"`
+	Density     string     `db:"Density"`
+	PH       string        `db:"PH"`
+	Sulphates      string     `db:"Sulphates"`
+	Alcohol     string     `db:"Alcohol"`
+	Quality       string        `db:"Quality"`
 	CreatedAt *time.Time `db:"created_at"`
 	UpdatedAt *time.Time `db:"updated_at"`
 }

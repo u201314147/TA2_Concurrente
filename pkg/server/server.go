@@ -108,9 +108,18 @@ func (s *server) FetchGopher(w http.ResponseWriter, r *http.Request) {
 
 type addGopherRequest struct {
 	ID    string `json:"ID"`
-	Name  string `json:"name"`
-	Image string `json:"image"`
-	Age   int    `json:"age"`
+	Fixedacidity    string `json:"Fixedacidity"`
+	Volatileacidity  string `json:"Volatileacidity"`
+	Citricacid string `json:"Citricacid"`
+	Residualsugar    string `json:"Residualsugar"`
+	Chlorides  string `json:"Chlorides"`
+	Freesulfurdioxide string `json:"Freesulfurdioxide"`
+	Totalsulfurdioxide    string `json:"Totalsulfurdioxide"`
+	Density  string `json:"Density"`
+	pH string `json:"pH"`
+	Sulphates    string `json:"Sulphates"`
+	Alcohol  string `json:"Alcohol"`
+	Quality  string `json:"Quality "`
 }
 
 // AddGopher save a gopher
@@ -126,7 +135,7 @@ func (s *server) AddGopher(w http.ResponseWriter, r *http.Request) {
 		_ = json.NewEncoder(w).Encode("Error unmarshalling request body")
 		return
 	}
-	if err := s.adding.AddGopher(r.Context(), g.ID, g.Name, g.Image, g.Age); err != nil {
+	if err := s.adding.AddGopher(r.Context(), g.ID, g.Fixedacidity, g.Volatileacidity, g.Citricacid, g.Residualsugar, g.Chlorides, g.Freesulfurdioxide, g.Totalsulfurdioxide, g.Density, g.pH, g.Sulphates, g.Alcohol, g.Quality); err != nil {
 		log.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
 		_ = json.NewEncoder(w).Encode("Can't create a gopher")
@@ -137,9 +146,18 @@ func (s *server) AddGopher(w http.ResponseWriter, r *http.Request) {
 }
 
 type modifyGopherRequest struct {
-	Name  string `json:"name"`
-	Image string `json:"image"`
-	Age   int    `json:"age"`
+	Fixedacidity    string `json:"Fixedacidity"`
+	Volatileacidity  string `json:"Volatileacidity"`
+	Citricacid string `json:"Citricacid"`
+	Residualsugar    string `json:"Residualsugar"`
+	Chlorides  string `json:"Chlorides"`
+	Freesulfurdioxide string `json:"Freesulfurdioxide"`
+	Totalsulfurdioxide    string `json:"Totalsulfurdioxide"`
+	Density  string `json:"Density"`
+	pH string `json:"pH"`
+	Sulphates    string `json:"Sulphates"`
+	Alcohol  string `json:"Alcohol"`
+	Quality  string `json:"Quality "`
 }
 
 // ModifyGopher modify gopher data
@@ -156,7 +174,7 @@ func (s *server) ModifyGopher(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	vars := mux.Vars(r)
-	if err := s.modifying.ModifyGopher(r.Context(), vars["ID"], g.Name, g.Image, g.Age); err != nil {
+	if err := s.modifying.ModifyGopher(r.Context(), vars["ID"], g.Fixedacidity, g.Volatileacidity, g.Citricacid, g.Residualsugar, g.Chlorides, g.Freesulfurdioxide, g.Totalsulfurdioxide, g.Density, g.pH, g.Sulphates, g.Alcohol, g.Quality); err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		_ = json.NewEncoder(w).Encode("Can't modify a gopher")
 		return

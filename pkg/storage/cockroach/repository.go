@@ -23,9 +23,9 @@ func NewRepository(db *sql.DB, tracer *zipkin.Tracer) gopher.Repository {
 }
 
 func (r gopherRepository) CreateGopher(_ context.Context, g *gopher.Gopher) error {
-	sqlStm := `INSERT INTO gophers (id, name, age, image, created_at) 
-	VALUES ($1, $2, $3, $4, NOW())`
-	_, err := r.db.Exec(sqlStm, g.ID, g.Name, g.Age, g.Image)
+	sqlStm := `INSERT INTO gophers (id, Fixedacidity, Volatileacidity, Citricacid, Residualsugar, Chlorides, Freesulfurdioxide, Totalsulfurdioxide, Density, PH, Sulphates, Alcohol, Quality, created_at) 
+	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, NOW())`
+	_, err := r.db.Exec(sqlStm, g.ID, g.Fixedacidity, g.Volatileacidity, g.Citricacid, g.Residualsugar, g.Chlorides, g.Freesulfurdioxide, g.Totalsulfurdioxide, g.Density, g.PH, g.Sulphates, g.Alcohol, g.Quality)
 	if err != nil {
 		return err
 	}
@@ -33,7 +33,7 @@ func (r gopherRepository) CreateGopher(_ context.Context, g *gopher.Gopher) erro
 }
 
 func (r gopherRepository) FetchGophers(ctx context.Context) ([]gopher.Gopher, error) {
-	sqlStm := `SELECT id, name, age, image, created_at, updated_at FROM gophers`
+	sqlStm := `SELECT id, Fixedacidity, Volatileacidity, Quality , Residualsugar, Chlorides, Freesulfurdioxide, Totalsulfurdioxide, Density, PH, Sulphates, Alcohol, Quality, created_at, updated_at FROM gophers`
 	rows, err := r.db.Query(sqlStm)
 	if err != nil {
 		return nil, err
@@ -43,7 +43,7 @@ func (r gopherRepository) FetchGophers(ctx context.Context) ([]gopher.Gopher, er
 
 	for rows.Next() {
 		var g gopher.Gopher
-		if err := rows.Scan(&g.ID, &g.Name, &g.Age, &g.Image, &g.CreatedAt, &g.UpdatedAt); err != nil {
+		if err := rows.Scan(&g.ID, &g.Fixedacidity, &g.Volatileacidity, &g.Citricacid, &g.Residualsugar, &g.Chlorides, &g.Freesulfurdioxide, &g.Totalsulfurdioxide, &g.Density, &g.PH, &g.Sulphates, &g.Alcohol, &g.Quality , &g.CreatedAt, &g.UpdatedAt); err != nil {
 			log.Println(err)
 			continue
 		}

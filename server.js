@@ -26,6 +26,7 @@ app.get('/', function(req, res){
 
 
 app.post('/',function(req,res){
+  var ID = Math.random().toString(36).substr(2, 9);
    var Fixedacidity = req.body.Fixedacidity;
    var Volatileacidity = req.body.Volatileacidity;
    var Citricacid = req.body.Citricacid;
@@ -34,7 +35,7 @@ app.post('/',function(req,res){
    var Freesulfurdioxide = req.body.Freesulfurdioxide;
    var Totalsulfurdioxide = req.body.Totalsulfurdioxide;
    var Density = req.body.Density;
-   var pH = req.body.pH;
+   var PH = req.body.PH;
    var Sulphates = req.body.Sulphates;
    var Alcohol = req.body.Alcohol;
    var Quality  = req.body.Quality ;
@@ -50,7 +51,7 @@ app.post('/',function(req,res){
    				  + '"Freesulfurdioxide": "' + Freesulfurdioxide +'",\n'
    				  + '"Totalsulfurdioxide": "' + Totalsulfurdioxide +'",\n'
    				  + '"Density": "' + Density +'",\n'
-   				  + '"pH": "' + pH +'",\n'
+   				  + '"PH": "' + PH +'",\n'
    				  + '"Sulphates": "' + Sulphates +'",\n'
    				  + '"Alcohol": "' + Alcohol +'",\n'
    				  + '"Quality": "' + Quality  +'",\n'
@@ -62,6 +63,7 @@ app.post('/',function(req,res){
    console.log(htmlData);
 
 axios.post('http://localhost:3000/gophers', {
+  ID,
     Fixedacidity,
     Volatileacidity,
    Citricacid,
@@ -70,7 +72,7 @@ axios.post('http://localhost:3000/gophers', {
    Freesulfurdioxide,
    Totalsulfurdioxide,
    Density,
-   pH,
+   PH,
    Sulphates,
    Alcohol,
    Quality

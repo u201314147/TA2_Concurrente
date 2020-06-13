@@ -8,7 +8,7 @@ import (
 
 // Service provides adding operations.
 type Service interface {
-	AddGopher(ctx context.Context, ID, name, image string, age int) error
+	AddGopher(ctx context.Context, ID, Fixedacidity, Volatileacidity, Citricacid, Residualsugar, Chlorides, Freesulfurdioxide, Totalsulfurdioxide, Density, pH, Sulphates, Alcohol, Quality string) error
 }
 
 type service struct {
@@ -21,7 +21,7 @@ func NewService(repository gopher.Repository) Service {
 }
 
 // AddGopher adds the given gopher to storage
-func (s *service) AddGopher(ctx context.Context, ID, name, image string, age int) error {
-	g := gopher.New(ID, name, image, age)
+func (s *service) AddGopher(ctx context.Context, ID, Fixedacidity, Volatileacidity, Citricacid, Residualsugar, Chlorides, Freesulfurdioxide, Totalsulfurdioxide, Density, pH, Sulphates, Alcohol, Quality string) error {
+	g := gopher.New(ID, Fixedacidity, Volatileacidity, Citricacid,  Residualsugar, Chlorides, Freesulfurdioxide, Totalsulfurdioxide, Density, pH, Sulphates, Alcohol, Quality)
 	return s.repository.CreateGopher(ctx, g)
 }

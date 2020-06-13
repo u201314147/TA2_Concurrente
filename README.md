@@ -8,7 +8,7 @@ Se debe tener go para escritorio instalado
 
 https://github.com/jmeubank/tdm-gcc/releases/download/v9.2.0-tdm64-1/tdm64-gcc-9.2.0.exe
 
-Para ejecutar el servidor local en go situarse en la raiz del proyecto y en cmd escribir
+Para ejecutar el servidor backend local en go situarse en la raiz del proyecto y en cmd escribir
 go run cmd/gopherapi/main.go
 
 Para ejecutar el servidor frontend en node.js situarse en la raiz del proyecto y escribir npm install (para los prerequisitos) y luego

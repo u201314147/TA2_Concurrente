@@ -10,34 +10,38 @@ import (
 )
 
 func main() {
-	// Load in a dataset, with headers. Header attributes will be stored.
-	// Think of instances as a Data Frame structure in R or Pandas.
-	// You can also create instances from scratch.
+
+
 	rawData, err := base.ParseCSVToInstances("datasets/wine.csv", false)
+
+	//dataset de api
+	//rawData, err := base.ParseCSVToInstances("datasets/wineapi.csv", false)
+
+
 	if err != nil {
 		panic(err)
 	}
 
-	// Print a pleasant summary of your data.
+	// Imprimimos la lista de data del csv y el endpoint
 	fmt.Println(rawData)
 
-	//Initialises a new KNN classifier
+	//Inicializamos el clasificador KNN
 	cls := knn.NewKnnClassifier("euclidean", "linear", 2)
 
-	//Do a training-test split
+	//Entrenamos la data
 	trainData, testData := base.InstancesTrainTestSplit(rawData, 0.50)
 	cls.Fit(trainData)
 
-	//Calculates the Euclidean distance and returns the most popular label
+	//calculamos la distancia Euclidiana y retorna la mas cercana
 	predictions, err := cls.Predict(testData)
 	if err != nil {
 		panic(err)
 	}
 
-	// Prints precision/recall metrics
+	// Imprimimos los resultados en la matriz de confusion
 	confusionMat, err := evaluation.GetConfusionMatrix(testData, predictions)
 	if err != nil {
-		panic(fmt.Sprintf("Unable to get confusion matrix: %s", err.Error()))
+		panic(fmt.Sprintf("No se pudo tenre la matriz de confusion: %s", err.Error()))
 	}
 	fmt.Println(evaluation.GetSummary(confusionMat))
 }

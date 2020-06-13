@@ -38,7 +38,7 @@ app.post('/',function(req,res){
    var PH = req.body.PH;
    var Sulphates = req.body.Sulphates;
    var Alcohol = req.body.Alcohol;
-   var Quality  = req.body.Quality ;
+   var Quality  = req.body.Quality;
 
 
 
